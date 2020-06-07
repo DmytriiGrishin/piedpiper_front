@@ -29,5 +29,6 @@
         grid-column-gap: 3em;
         justify-content: space-evenly;
         margin: 0.5em 2em 0 2em;
+        cursor:pointer;
     }
 </style>
