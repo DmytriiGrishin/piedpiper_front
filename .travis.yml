@@ -19,6 +19,8 @@ after_success:
   - eval "$(ssh-agent -s)" #start the ssh agent
   - chmod 600 deploy_rsa
   - ssh-add deploy_rsa
-  - docker save piedfront | bzip2 | ssh piedpiper@34.90.231.206 'bunzip2 | sudo docker load && sudo docker stop front && sudo docker rm front && sudo docker run -d --name front -p 8081:80 piedfront'
+  - docker save piedfront -o piedfront.tar
+  - scp piedfront.tar piedpiper@34.90.231.206:~
+  - ssh piedpiper@34.90.231.206 'sudo docker load -i piedfront.tar && sudo docker stop front && sudo docker rm front && sudo docker run -d --name front -p 8081:80 piedfront && rm piedfront.tar'
 
 
