@@ -2,7 +2,14 @@
     <div class="answer-container">
         <div class="question"> {{answer.question}} </div>
         <div class="answer">  {{answer.text}} </div>
-        <v-rating @input="dismissError" v-model="answer.score" :background-color="color" >
+        <v-rating @input="dismissError"
+                  light
+                  v-model="answer.score"
+                  full-icon='mdi-star'
+                  empty-icon="mdi-star-outline"
+                  color="primary"
+                  :background-color="color"
+        >
         </v-rating>
     </div>
 </template>
@@ -14,16 +21,16 @@
         data() {
             return {
                 score: 0,
-                color: "rgba(0, 0, 0, 0.5)"
+                color: 'primary'
             }
         },
         methods: {
             validationError() {
-                this.color = "rgba(255, 0, 0, 0.5)"
+                this.color = 'error'
             },
             dismissError() {
                 console.log("dismissing error")
-                this.color = "rgba(0, 0, 0, 0.5)"
+                this.color = 'primary'
             }
         }
     }

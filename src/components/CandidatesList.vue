@@ -1,17 +1,27 @@
 <template>
   <div>
-    <div class="list-header-container">
-      <div class="list-header">
-        <h2>ФИО СОТРУДНИКА</h2>
-        <h2>РОЛЬ</h2>
-      </div>
-      <button><span>ВЫЙТИ</span></button>
-    </div>
+    <v-container fluid class="list-header-container">
+      <v-row no-gutters align="center">
+        <v-col cols="12" md="10">
+            <v-row justify="space-evenly" class="list-header">
+                <v-col cols=“12”>ФИО СОТРУДНИКА</v-col>
+                <v-col cols=“12”>РОЛЬ</v-col>
+            </v-row>
+        </v-col>
+        <v-col cols="12" md="2">
+            <v-row align="center" justify="center">
+                <v-col cols=“12”>
+                    <v-btn color="primary"><span>ВЫЙТИ</span></v-btn>
+                </v-col>
+            </v-row>
+        </v-col>
+      </v-row>
+    </v-container>
 
     <v-container fluid class="candidates-list">
-      <v-row class="candidates-list-header">
-        <v-col><span class="fio">ФИО КАНДИДАТА</span></v-col>
-        <v-col><span class="position">Должность</span></v-col>
+      <v-row justify="space-evenly" class="candidates-list-header">
+        <v-col cols=“12”><span class="fio">ФИО КАНДИДАТА</span></v-col>
+        <v-col cols=“12”><span class="position">Должность</span></v-col>
       </v-row>
       <CandidatesListItem class="candidates-list-item"
                           v-for="candidate in candidates"
@@ -55,7 +65,6 @@
         name: "Жмыщенко Михаил Петрович",
         position: "Охранник",
       }]
-
     }),
   }
 </script>
@@ -66,9 +75,6 @@
   }
 
   .list-header-container {
-    display: grid;
-    grid-template-columns: 5fr 1fr ;
-    grid-column-gap: 3em;
     margin: 0 2em 0 2em;
   }
 
@@ -79,10 +85,6 @@
     box-sizing: border-box;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-    display: grid;
-    grid-template-columns: 1fr 1fr ;
-    grid-column-gap: 3em;
-    justify-content: space-evenly;
   }
 
 
@@ -92,20 +94,13 @@
     box-sizing: border-box;
     border-radius: 10px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    max-inline-size: fit-content;
-  }
-  .list-header h2 {
-    display: inline;
   }
 
   * {
     font-family: Roboto, sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 24px;
-    line-height: 28px;
     text-align: center;
-    color: #000000;
   }
 
   .candidates-list {
@@ -115,13 +110,8 @@
   .candidates-list-header {
     background: #FFFFFF;
     border: 1px solid #000000;
-    box-sizing: border-box;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 3px;
-    display: grid;
-    grid-template-columns: 1fr 1fr ;
-    grid-column-gap: 3em;
-    justify-content: space-evenly;
     margin: 0.5em 2em 0 2em;
   }
 

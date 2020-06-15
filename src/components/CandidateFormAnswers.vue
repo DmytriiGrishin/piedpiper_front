@@ -15,6 +15,7 @@
 
 <script>
     import CandidateFormAnswersAnswer from "@/components/CandidateFormAnswersAnswer";
+    import NProgress from "nprogress";
     export default {
         name: "CandidateFormAnswers",
         props: ["candidateId"],
@@ -41,17 +42,25 @@
         methods: {
             saveForm() {
                 console.log(`candidate ${this.candidateId}:`)
-                if (this.answers.map(ans => {
+                let hasErrors = this.answers.map(ans => {
                     if (ans.score === 0) {
-                      this.$refs["answer" + ans.id][0].validationError()
+                        this.$refs["answer" + ans.id][0].validationError()
                         return true;
                     }
                     return false
-                }).reduce((a, b) => a | b)) {
+                }).reduce((a, b) => a | b);
+                if (hasErrors) {
                     return
                 }
                 this.$router.push('/candidates')
             }
+        },
+        beforeRouteEnter (to, from, next) {
+            NProgress.start()
+            setTimeout(() => {
+                NProgress.done()
+                next()
+            }, 1000)
         }
     }
 </script>
