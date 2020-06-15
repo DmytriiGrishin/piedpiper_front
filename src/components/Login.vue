@@ -12,28 +12,28 @@
                     md="4"
             >
                 <v-card class="elevation-12">
-                    <v-card-title>Вход</v-card-title>
+                    <v-card-title class="text-center">Вход</v-card-title>
                     <v-card-text>
                         <v-form v-model="isValid">
                             <v-alert outline color="error" icon="mdi-exclamation-thick" :value="isError">Неправильный логин или пароль</v-alert>
                             <v-text-field
-                                    label="Login"
+                                    label="Логин"
                                     name="login"
                                     prepend-icon="mdi-account"
                                     type="text"
                                     v-model="login"
-                                    :rules="[v => !!v || 'Login is required']"
+                                    :rules="[v => !!v || 'Логин должен быть указан']"
                                     required
                             ></v-text-field>
 
                             <v-text-field
                                     id="password"
-                                    label="Password"
+                                    label="Пароль"
                                     name="password"
                                     prepend-icon="mdi-lock"
                                     type="password"
                                     v-model="password"
-                                    :rules="[v => !!v || 'Password is required']"
+                                    :rules="[v => !!v || 'Пароль должен быть указан']"
                                     required
                             ></v-text-field>
                         </v-form>
