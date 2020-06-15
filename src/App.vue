@@ -7,10 +7,23 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: 'App',
   components: {
 
+  },
+  created: function () {
+    axios.interceptors.response.use(undefined, function (err) {
+      return new Promise(function () {
+        if (err.status === 401 && err.config && !err.config.__isRetryRequest) {
+          localStorage.removeItem('user-token')
+          axios.defaults.headers.common['Authorization'] = null
+          this.$router.push("/login")
+        }
+      });
+    });
   }
 }
 </script>

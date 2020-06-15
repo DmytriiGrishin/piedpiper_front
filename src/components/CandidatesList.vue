@@ -35,6 +35,7 @@
 <script>
   import CandidatesListItem from "@/components/CandidatesListItem";
   import axios from "axios";
+  import NProgress from "nprogress";
   export default {
     components: {CandidatesListItem},
     props: {
@@ -70,10 +71,16 @@
       methods: {
         logout () {
             localStorage.removeItem('user-token')
-            // Add the following line:
             axios.defaults.headers.common['Authorization'] = null
             this.$router.push("/login")
         }
+      },
+      beforeRouteEnter (to, from, next) {
+          NProgress.start()
+          setTimeout(() => {
+              NProgress.done()
+              next()
+          }, 1000)
       }
   }
 </script>
