@@ -1,15 +1,24 @@
 language: node_js
 node_js:
-  - "node"
-
+- node
+services:
+- docker
 cache: npm
 
-script: npm run build
+script:
+  - docker build . -t piedfront
 
 deploy:
-  provider: pages
+  provider: script
   skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  local_dir: dist
+  script:
+    docker save piedfront | bzip2 | \
+    ssh piedpiper@34.90.231.206 'bunzip2 | docker load $$  docker restart piedfront'
   on:
     branch: master
+
+before_install:
+- openssl aes-256-cbc -K $encrypted_db2095f63ba3_key -iv $encrypted_db2095f63ba3_iv
+  -in deploy_rsa.enc -out deploy_rsa -d
+
+

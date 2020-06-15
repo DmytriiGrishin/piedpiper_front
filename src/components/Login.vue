@@ -64,7 +64,7 @@
         methods: {
             loginAction() {
                 this.isError = false
-                axios.post("api/login", {login: this.login, email: this.email})
+                axios.post("api/login", {login: this.login, password: this.password})
                     .then((resp) => {
                         const token = resp.data.token
                         localStorage.setItem('user-token', token)
