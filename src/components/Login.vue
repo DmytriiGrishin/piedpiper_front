@@ -15,7 +15,7 @@
                     <v-card-title class="text-center">Вход</v-card-title>
                     <v-card-text>
                         <v-form v-model="isValid">
-                            <v-alert outline color="error" icon="mdi-exclamation-thick" :value="isError">Неправильный логин или пароль</v-alert>
+                            <v-alert outlined color="error" icon="mdi-exclamation-thick" :value="isError">Неправильный логин или пароль</v-alert>
                             <v-text-field
                                     label="Логин"
                                     name="login"
