@@ -11,7 +11,7 @@
         <v-col cols="12" md="2">
             <v-row align="center" justify="center">
                 <v-col cols=“12”>
-                    <v-btn color="primary"><span>ВЫЙТИ</span></v-btn>
+                    <v-btn color="primary" @click="logout"><span>ВЫЙТИ</span></v-btn>
                 </v-col>
             </v-row>
         </v-col>
@@ -34,6 +34,7 @@
 
 <script>
   import CandidatesListItem from "@/components/CandidatesListItem";
+  import axios from "axios";
   export default {
     components: {CandidatesListItem},
     props: {
@@ -66,6 +67,14 @@
         position: "Охранник",
       }]
     }),
+      methods: {
+        logout () {
+            localStorage.removeItem('user-token')
+            // Add the following line:
+            axios.defaults.headers.common['Authorization'] = null
+            this.$router.push("/login")
+        }
+      }
   }
 </script>
 
