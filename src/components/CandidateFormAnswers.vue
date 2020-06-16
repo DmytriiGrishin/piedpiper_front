@@ -16,7 +16,7 @@
 <script>
     import CandidateFormAnswersAnswer from "@/components/CandidateFormAnswersAnswer";
     import NProgress from "nprogress";
-    import axios from "axios";
+    //import axios from "axios";
     export default {
         name: "CandidateFormAnswers",
         props: ["candidateId"],
@@ -59,14 +59,14 @@
                     return
                 }
 
-                NProgress.start()
-                axios.post(`api/score/${this.candidateId}`, {answers: this.answers}).then(() => {
-                    NProgress.done()
+                //NProgress.start()
+                // axios.post(`api/score/${this.candidateId}`, {answers: this.answers}).then(() => {
+                //     NProgress.done()
+                //     this.$router.push('/candidates')
+                // }).catch(() => {
+                    //NProgress.done()
                     this.$router.push('/candidates')
-                }).catch(() => {
-                    NProgress.done()
-                    this.$router.push('/candidates')
-                })
+                // })
 
             }
         },
