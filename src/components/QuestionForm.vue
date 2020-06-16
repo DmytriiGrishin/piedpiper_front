@@ -32,14 +32,13 @@
         },
         beforeRouteEnter (to, from, next) {
             NProgress.start()
-            // axios.get("api/questions").then((resp) => {
-            //     next(vm => {
-            //         vm.textOnly = resp.data.textQuestions
-            //         vm.multipleChoice = resp.data.multipleChoicesQuestions
-            //         NProgress.done()
-            //     })
-            // }).catch(() => NProgress.done())
-            setTimeout(()=> {NProgress.done(); next()}, 2000)
+            axios.get("api/questions").then((resp) => {
+                next(vm => {
+                    vm.textOnly = resp.data.textQuestions
+                    vm.multipleChoice = resp.data.multipleChoicesQuestions
+                    NProgress.done()
+                })
+            }).catch(() => NProgress.done())
 
         },
         methods: {
