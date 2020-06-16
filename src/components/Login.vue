@@ -50,6 +50,7 @@
 
 <script>
     import axios from "axios";
+    import NProgress from "nprogress";
 
     export default {
         name: "Login",
@@ -76,7 +77,15 @@
                     this.isError = true;
                 })
             }
-        }
+        },
+        beforeRouteEnter (to, from, next) {
+            NProgress.start()
+            if (localStorage.getItem('user-token')) {
+                axios.defaults.headers.common['Authorization'] = localStorage.getItem('user-token')
+                NProgress.done()
+                next('/candidates')
+            }
+        },
     }
 </script>
 

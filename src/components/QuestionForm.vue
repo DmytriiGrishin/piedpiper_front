@@ -38,9 +38,7 @@
                     vm.multipleChoice = resp.data.multipleChoicesQuestions
                     NProgress.done()
                 })
-            })
-            to
-            from
+            }).catch(() => NProgress.done())
         },
         methods: {
             submit () {

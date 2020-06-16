@@ -16,6 +16,7 @@
 <script>
     import CandidateFormAnswersAnswer from "@/components/CandidateFormAnswersAnswer";
     import NProgress from "nprogress";
+    import axios from "axios";
     export default {
         name: "CandidateFormAnswers",
         props: ["candidateId"],
@@ -52,15 +53,24 @@
                 if (hasErrors) {
                     return
                 }
-                this.$router.push('/candidates')
+
+                NProgress.start()
+                axios.post(`api/score/${this.props.candidateId}`, {answers: this.answers}).then(() => {
+                    NProgress.done()
+                    this.$router.push('/candidates')
+                }).catch(() => NProgress.done())
+
             }
         },
         beforeRouteEnter (to, from, next) {
             NProgress.start()
-            setTimeout(() => {
-                NProgress.done()
-                next()
-            }, 1000)
+            axios.get(`api/candidate/${to.params.candidateId}`).then((resp) => {
+                next(vm => {
+                    vm.candidate = resp.data.candidate
+                    vm.answers = resp.data.answers
+                    NProgress.done()
+                })
+            }).catch(() => NProgress.done())
         }
     }
 </script>

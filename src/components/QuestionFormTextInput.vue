@@ -10,6 +10,7 @@
             </v-col>
             <v-col cols="12" md="7" ><v-text-field
                     name="answer"
+                    class="border"
                     type="text"
                     v-model="question.answer"
                     :rules="[v => !!v || 'Все вопросы обязательны для ответа']"
@@ -32,4 +33,9 @@
 </script>
 
 <style scoped>
+    .border {
+        border: 1px solid #000000;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 3px;
+    }
 </style>

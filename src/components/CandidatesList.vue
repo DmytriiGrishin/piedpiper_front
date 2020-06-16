@@ -77,10 +77,13 @@
       },
       beforeRouteEnter (to, from, next) {
           NProgress.start()
-          setTimeout(() => {
-              NProgress.done()
-              next()
-          }, 1000)
+          axios.get("api/questions").then((resp) => {
+              next(vm => {
+                  vm.candidates = resp.data.candidates
+                  NProgress.done()
+              })
+          }).catch(() => NProgress.done())
+
       }
   }
 </script>
