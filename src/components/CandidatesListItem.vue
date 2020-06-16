@@ -1,6 +1,6 @@
 <template>
     <v-row v-ripple justify="space-evenly" @click="openCandidate" class="candidates-list-item">
-        <v-col cols=“12”><span class="fio">{{candidate.name}}</span></v-col>
+        <v-col cols=“12”><span class="fio">{{candidate.fio}}</span></v-col>
         <v-col cols=“12”><span class="position">{{candidate.position}}</span></v-col>
     </v-row>
 </template>

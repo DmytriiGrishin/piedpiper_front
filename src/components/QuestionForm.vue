@@ -2,7 +2,7 @@
     <v-form v-model="isValid">
         <QuestionFormTextInput v-for="text in textOnly" :key="'text' + text.id" :question="text"/>
         <QuestionFormMultipleChoice v-for="choice in multipleChoice" :key="'choice' + choice.id" :question="choice"/>
-        <v-btn @click="submit" :disabled="!isValid" >Отправить</v-btn>
+        <v-btn @click="submit" :disabled="!isValid&&sendSuccsesfully" >Отправить</v-btn>
         <v-row>
             <v-col cols = "4"><v-spacer/></v-col>
             <v-col cols = "4">
