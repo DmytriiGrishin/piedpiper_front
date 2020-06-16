@@ -9,8 +9,7 @@
                 </v-row>
             </v-col>
             <v-col cols="12" md="7" class="border" ><v-text-field
-                    name="answer"
-
+                    name="SOMEGENERICNAMESONOAUTO"
                     type="text"
                     v-model="question.answer"
                     :rules="[v => !!v || 'Все вопросы обязательны для ответа']"
