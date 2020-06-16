@@ -82,7 +82,7 @@
                   vm.candidates = resp.data.candidates
                   NProgress.done()
               })
-          }).catch(() => NProgress.done())
+          }).catch(() => {NProgress.done(); next()})
 
       }
   }
