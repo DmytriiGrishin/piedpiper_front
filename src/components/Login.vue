@@ -85,6 +85,8 @@
                 NProgress.done()
                 next('/candidates')
             }
+            NProgress.done()
+            next()
         },
     }
 </script>
