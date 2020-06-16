@@ -35,7 +35,7 @@
 <script>
   import CandidatesListItem from "@/components/CandidatesListItem";
   import axios from "axios";
-  import NProgress from "nprogress";
+  //import NProgress from "nprogress";
   export default {
     components: {CandidatesListItem},
     props: {
@@ -75,18 +75,18 @@
             this.$router.push("/login")
         }
       },
-      beforeRouteEnter (to, from, next) {
-          NProgress.start()
-          // axios.get("api/candidates").then((resp) => {
-          //     next(vm => {
-          //         vm.candidates = resp.data.candidates
-          //         NProgress.done()
-          //     })
-          // }).catch(() => {
-              NProgress.done(); next()
-          //})
-
-      }
+      // beforeRouteEnter (to, from, next) {
+      //     NProgress.start()
+      //     // axios.get("api/candidates").then((resp) => {
+      //     //     next(vm => {
+      //     //         vm.candidates = resp.data.candidates
+      //     //         NProgress.done()
+      //     //     })
+      //     // }).catch(() => {
+      //         NProgress.done(); next()
+      //     //})
+      //
+      // }
   }
 </script>
 
