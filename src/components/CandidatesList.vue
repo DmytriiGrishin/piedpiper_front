@@ -77,12 +77,14 @@
       },
       beforeRouteEnter (to, from, next) {
           NProgress.start()
-          axios.get("api/candidates").then((resp) => {
-              next(vm => {
-                  vm.candidates = resp.data.candidates
-                  NProgress.done()
-              })
-          }).catch(() => {NProgress.done(); next()})
+          // axios.get("api/candidates").then((resp) => {
+          //     next(vm => {
+          //         vm.candidates = resp.data.candidates
+          //         NProgress.done()
+          //     })
+          // }).catch(() => {
+              NProgress.done(); next()
+          //})
 
       }
   }

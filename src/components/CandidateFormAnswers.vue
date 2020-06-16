@@ -72,13 +72,15 @@
         },
         beforeRouteEnter (to, from, next) {
             NProgress.start()
-            axios.get(`api/candidate/${to.params.candidateId}`).then((resp) => {
-                next(vm => {
-                    vm.candidate = resp.data.candidate
-                    vm.answers = resp.data.answers
-                    NProgress.done()
-                })
-            }).catch(() => {NProgress.done(); next()})
+            // axios.get(`api/candidate/${to.params.candidateId}`).then((resp) => {
+            //     next(vm => {
+            //         vm.candidate = resp.data.candidate
+            //         vm.answers = resp.data.answers
+            //         NProgress.done()
+            //     })
+            // }).catch(() => {
+                NProgress.done(); next()
+            //})
         }
     }
 </script>
