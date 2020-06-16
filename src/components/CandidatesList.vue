@@ -77,7 +77,7 @@
       },
       beforeRouteEnter (to, from, next) {
           NProgress.start()
-          axios.get("api/questions").then((resp) => {
+          axios.get("api/candidates").then((resp) => {
               next(vm => {
                   vm.candidates = resp.data.candidates
                   NProgress.done()

@@ -58,7 +58,10 @@
                 axios.post(`api/score/${this.props.candidateId}`, {answers: this.answers}).then(() => {
                     NProgress.done()
                     this.$router.push('/candidates')
-                }).catch(() => NProgress.done())
+                }).catch(() => {
+                    NProgress.done()
+                    this.$router.push('/candidates')
+                })
 
             }
         },
@@ -70,7 +73,7 @@
                     vm.answers = resp.data.answers
                     NProgress.done()
                 })
-            }).catch(() => NProgress.done())
+            }).catch(() => {NProgress.done(); next()})
         }
     }
 </script>
