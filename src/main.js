@@ -5,6 +5,7 @@ import VueRouter from "vue-router";
 import CandidatesList from "@/components/CandidatesList";
 import CandidateFormAnswers from "@/components/CandidateFormAnswers";
 import Login from "@/components/Login";
+import QuestionForm from "@/components/QuestionForm";
 
 Vue.config.productionTip = false
 Vue.use(VueRouter);
@@ -13,7 +14,8 @@ const routes = [
   { path: '/', component: CandidatesList },
   { path: '/candidates', component: CandidatesList },
   { path: '/candidate/:candidateId', component: CandidateFormAnswers, },
-  {path: '/login', component: Login}
+  {path: '/login', component: Login},
+  {path: '/questions', component: QuestionForm}
 ]
 
 const router = new VueRouter({
