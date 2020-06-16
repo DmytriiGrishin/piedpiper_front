@@ -60,7 +60,7 @@
                 }
 
                 NProgress.start()
-                axios.post(`api/score/${this.props.candidateId}`, {answers: this.answers}).then(() => {
+                axios.post(`api/score/${this.candidateId}`, {answers: this.answers}).then(() => {
                     NProgress.done()
                     this.$router.push('/candidates')
                 }).catch(() => {
